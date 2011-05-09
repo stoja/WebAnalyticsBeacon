@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="WebAnalytics" Class="WebAnalyticsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=changeme;Initial Catalog=WebAnalytics;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="WebAnalyticsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Result" Member="Results">
+    <Type Name="Result">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="definition_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="actual_result" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="time_stamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Definition_Result" Member="Definition" ThisKey="definition_id" OtherKey="id" Type="Definition" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Definition" Member="Definitions">
+    <Type Name="Definition">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="host" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="url" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="page_name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="var_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="referrer" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Association Name="Definition_Result" Member="Results" ThisKey="id" OtherKey="definition_id" Type="Result" />
+      <Association Name="Definition_Baseline" Member="Baselines" ThisKey="id" OtherKey="definition_id" Type="Baseline" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Baseline" Member="Baselines">
+    <Type Name="Baseline">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="definition_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="expected_value" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="time_stamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Definition_Baseline" Member="Definition" ThisKey="definition_id" OtherKey="id" Type="Definition" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetDefinitionID" Method="GetDefinitionID">
+    <Parameter Name="host" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="referrer" Type="System.String" DbType="VarChar(400)" />
+    <Parameter Name="pageName" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="varName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="definitionID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DoesVarResultAlreadyExist" Method="DoesVarResultAlreadyExist">
+    <Parameter Name="definition_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="expected_result" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="definitionID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

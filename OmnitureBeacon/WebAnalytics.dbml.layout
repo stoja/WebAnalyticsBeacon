@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="WebAnalytics">
+  <DataContextMoniker Name="/WebAnalyticsDataContext" />
+  <nestedChildShapes>
+    <classShape Id="161e1534-1d4a-4855-949c-cc8b68005525" absoluteBounds="3.625, 4, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/WebAnalyticsDataContext/Result" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4ca443c6-28fd-4090-b6c5-4078c668d102" absoluteBounds="3.6399999999999997, 4.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="00c05944-f0d5-4cf5-99c6-72db7a9e553c" absoluteBounds="3.375, 1.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/WebAnalyticsDataContext/Definition" />
+      <nestedChildShapes>
+        <elementListCompartment Id="90e6a919-92d6-4498-9396-1b0a88785e18" absoluteBounds="3.3899999999999997, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.5 : 3.0881982421875); (4.5 : 4)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/WebAnalyticsDataContext/Definition/Definition_Result" />
+      <nodes>
+        <classShapeMoniker Id="00c05944-f0d5-4cf5-99c6-72db7a9e553c" />
+        <classShapeMoniker Id="161e1534-1d4a-4855-949c-cc8b68005525" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="13687510-c9d5-4763-8209-f055dc8f4497" absoluteBounds="0.5, 1.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/WebAnalyticsDataContext/Baseline" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8aeb5088-6331-4b02-93c9-fc12427d9c2b" absoluteBounds="0.51500000000000012, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.375 : 1.91429768880208); (2.5 : 1.91429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/WebAnalyticsDataContext/Definition/Definition_Baseline" />
+      <nodes>
+        <classShapeMoniker Id="00c05944-f0d5-4cf5-99c6-72db7a9e553c" />
+        <classShapeMoniker Id="13687510-c9d5-4763-8209-f055dc8f4497" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
